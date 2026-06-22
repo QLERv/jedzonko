@@ -3,200 +3,313 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kolacja dla Nas ❤️</title>
+<title>Dla Kochania ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    font-family:'Quicksand',sans-serif;
-    min-height:100vh;
-    background:linear-gradient(135deg,#ffd6e7,#ffeaf3,#fff0f6);
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.heart{
-    position:fixed;
-    font-size:24px;
-    animation:fall linear infinite;
-    opacity:.6;
-}
-
-@keyframes fall{
-    from{
-        transform:translateY(-100px);
-    }
-    to{
-        transform:translateY(110vh);
-    }
+font-family:'Quicksand',sans-serif;
+height:100vh;
+overflow:hidden;
+background:linear-gradient(135deg,#ffd6e7,#ffe8f3,#fff5fa);
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .card{
-    background:white;
-    width:90%;
-    max-width:650px;
-    padding:35px;
-    border-radius:35px;
-    text-align:center;
-    box-shadow:0 15px 40px rgba(255,105,180,.25);
-    position:relative;
-    z-index:10;
+width:90%;
+max-width:700px;
+background:white;
+padding:40px;
+border-radius:35px;
+box-shadow:0 15px 40px rgba(255,105,180,.25);
+text-align:center;
+position:relative;
+z-index:2;
 }
 
-.food{
-    font-size:90px;
-    margin-bottom:10px;
+.screen{
+display:none;
+}
+
+.screen.active{
+display:block;
 }
 
 h1{
-    color:#ff4f9a;
-    margin-bottom:15px;
+color:#ff4f9a;
+margin-bottom:20px;
+font-size:2.2rem;
 }
 
 .subtitle{
-    color:#666;
-    margin-bottom:30px;
-    line-height:1.5;
+font-size:1.15rem;
+color:#666;
+margin-bottom:30px;
+line-height:1.5;
 }
 
-.buttons{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    position:relative;
-    min-height:80px;
+.emoji{
+font-size:80px;
+margin-bottom:15px;
 }
 
 button{
-    border:none;
-    padding:16px 30px;
-    border-radius:50px;
-    font-size:18px;
-    font-weight:700;
-    cursor:pointer;
-    transition:.25s;
+border:none;
+padding:16px 28px;
+margin:10px;
+border-radius:999px;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+font-family:inherit;
+transition:.2s;
+}
+
+button:hover{
+transform:scale(1.05);
 }
 
 .yes{
-    background:#ff5fa2;
-    color:white;
-}
-
-.yes:hover{
-    transform:scale(1.08);
+background:#ff5fa2;
+color:white;
 }
 
 .no{
-    background:#ffd3e5;
-    color:#ff4f9a;
-    position:relative;
+background:#ffd4e5;
+color:#ff4f9a;
 }
 
-.result{
-    display:none;
-    margin-top:30px;
+.choice{
+display:block;
+width:100%;
+max-width:320px;
+margin:12px auto;
+background:#ff5fa2;
+color:white;
 }
 
-.result h2{
-    color:#ff4f9a;
-    margin-bottom:15px;
+.heart{
+position:fixed;
+font-size:24px;
+pointer-events:none;
+animation:fall linear forwards;
 }
 
-.result p{
-    color:#555;
-    font-size:18px;
+@keyframes fall{
+from{
+transform:translateY(-100px);
+opacity:1;
 }
-
-.big{
-    font-size:70px;
-    margin-bottom:10px;
+to{
+transform:translateY(110vh);
+opacity:0;
+}
 }
 </style>
 </head>
-<body>
 
-<div id="hearts"></div>
+<body>
 
 <div class="card">
 
-    <div class="food">🍝🍓🩷</div>
+<!-- EKRAN 1 -->
 
-    <h1>Kochanie ❤️</h1>
+<div id="screen1" class="screen active">
 
-    <p class="subtitle">
-        Mam bardzo ważne pytanie...<br><br>
-        Co dziś jemy na kolację? 😋
-    </p>
+<div class="emoji">🥰</div>
 
-    <div class="buttons" id="buttons">
-        <button class="yes" onclick="showAnswer()">
-            Makaron z truskawkami 🍓
-        </button>
+<h1>Kochanie ❤️</h1>
 
-        <button class="no" id="noBtn">
-            Nie wiem 🤔
-        </button>
-    </div>
+<p class="subtitle">
+Czy mnie kochaaasz? 😘
+</p>
 
-    <div class="result" id="result">
-        <div class="big">🥰</div>
-        <h2>Wiedziałem, że wybierzesz najlepiej!</h2>
-        <p>
-            W takim razie rezerwuję miejsce przy stole dla najpiękniejszej dziewczyny ❤️
-        </p>
-    </div>
+<button class="yes" onclick="showScreen('screen2')">
+TAK ❤️
+</button>
+
+<button class="no escape">
+NIE 😈
+</button>
+
+</div>
+
+<!-- EKRAN 2 -->
+
+<div id="screen2" class="screen">
+
+<div class="emoji">🍕</div>
+
+<h1>Skoro mnie kochasz...</h1>
+
+<p class="subtitle">
+To zamawiamy coś na wieczór? 😋
+</p>
+
+<button class="yes" onclick="showScreen('screen3')">
+TAK 😍
+</button>
+
+<button class="no escape">
+NIE 🤨
+</button>
+
+</div>
+
+<!-- EKRAN 3 -->
+
+<div id="screen3" class="screen">
+
+<div class="emoji">🍽️</div>
+
+<h1>Jaką kuchnię wybierasz?</h1>
+
+<button class="choice" onclick="chooseCuisine('Włoska')">🍕 Włoska</button>
+<button class="choice" onclick="chooseCuisine('Japońska')">🍣 Japońska</button>
+<button class="choice" onclick="chooseCuisine('Amerykańska')">🍔 Amerykańska</button>
+<button class="choice" onclick="chooseCuisine('Meksykańska')">🌮 Meksykańska</button>
+<button class="choice" onclick="chooseCuisine('Polska')">🥟 Polska</button>
+<button class="choice" onclick="chooseCuisine('Kebab')">🥙 Kebab</button>
+
+</div>
+
+<!-- EKRAN 4 -->
+
+<div id="screen4" class="screen">
+
+<div class="emoji">😋</div>
+
+<h1 id="cuisineTitle"></h1>
+
+<div id="foodOptions"></div>
+
+</div>
+
+<!-- EKRAN 5 -->
+
+<div id="screen5" class="screen">
+
+<div class="emoji">🎉❤️🎉</div>
+
+<h1>Świetny wybór!</h1>
+
+<p class="subtitle" id="summary">
+</p>
+
+</div>
 
 </div>
 
 <script>
 
-// serduszka
-for(let i=0;i<30;i++){
-    const heart=document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML=Math.random()>0.5?"💖":"💕";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.animationDuration=(5+Math.random()*8)+"s";
-    heart.style.fontSize=(15+Math.random()*25)+"px";
-    document.body.appendChild(heart);
-}
+function showScreen(id){
 
-// uciekający przycisk
-const noBtn=document.getElementById("noBtn");
-
-noBtn.addEventListener("mouseover",()=>{
-    const x=Math.random()*(window.innerWidth-150);
-    const y=Math.random()*(window.innerHeight-80);
-
-    noBtn.style.position="fixed";
-    noBtn.style.left=x+"px";
-    noBtn.style.top=y+"px";
+document.querySelectorAll(".screen").forEach(screen=>{
+screen.classList.remove("active");
 });
 
-// mobile
-noBtn.addEventListener("click",()=>{
-    const x=Math.random()*(window.innerWidth-150);
-    const y=Math.random()*(window.innerHeight-80);
+document.getElementById(id).classList.add("active");
+}
 
-    noBtn.style.position="fixed";
-    noBtn.style.left=x+"px";
-    noBtn.style.top=y+"px";
+document.querySelectorAll(".escape").forEach(btn=>{
+
+function moveButton(){
+
+const x=Math.random()*(window.innerWidth-200);
+const y=Math.random()*(window.innerHeight-100);
+
+btn.style.position="fixed";
+btn.style.left=x+"px";
+btn.style.top=y+"px";
+}
+
+btn.addEventListener("mouseover",moveButton);
+btn.addEventListener("click",moveButton);
+
 });
 
-function showAnswer(){
-    document.getElementById("buttons").style.display="none";
-    document.getElementById("result").style.display="block";
+let selectedCuisine="";
+
+function chooseCuisine(cuisine){
+
+selectedCuisine=cuisine;
+
+showScreen("screen4");
+
+document.getElementById("cuisineTitle").innerText=
+"Wybrałaś kuchnię " + cuisine + " ❤️";
+
+const foods={
+
+"Włoska":["🍕 Pizza","🍝 Makaron","🧀 Lasagne"],
+
+"Japońska":["🍣 Sushi","🍜 Ramen","🥢 Udon"],
+
+"Amerykańska":["🍔 Burger","🍟 Frytki","🌭 Hot Dog"],
+
+"Meksykańska":["🌮 Taco","🌯 Burrito","🫓 Quesadilla"],
+
+"Polska":["🥟 Pierogi","🍲 Żurek","🥩 Schabowy"],
+
+"Kebab":["🥙 Kebab","🌯 Rollo","🍟 Kebab Box"]
+
+};
+
+let html="";
+
+foods[cuisine].forEach(food=>{
+
+html+=`
+<button class="choice" onclick="finish('${food}')">
+${food}
+</button>
+`;
+
+});
+
+document.getElementById("foodOptions").innerHTML=html;
 }
+
+function finish(food){
+
+showScreen("screen5");
+
+document.getElementById("summary").innerHTML=
+`
+Wybrałaś <b>${food}</b> ❤️<br><br>
+Zamówienie zostało zatwierdzone przez najpiękniejszą dziewczynę na świecie 😘
+`;
+
+for(let i=0;i<100;i++){
+
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML=Math.random()>0.5 ? "💖" : "💕";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=
+(3+Math.random()*4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},7000);
+}
+}
+
 </script>
 
 </body>
