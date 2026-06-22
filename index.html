@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Dla Kochania ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -16,9 +19,9 @@ box-sizing:border-box;
 
 body{
 font-family:'Quicksand',sans-serif;
+background:linear-gradient(135deg,#ffd6e7,#ffe6f2,#fff4f9);
 height:100vh;
 overflow:hidden;
-background:linear-gradient(135deg,#ffd6e7,#ffe8f3,#fff5fa);
 display:flex;
 justify-content:center;
 align-items:center;
@@ -26,14 +29,21 @@ align-items:center;
 
 .card{
 width:90%;
-max-width:700px;
+max-width:750px;
 background:white;
 padding:40px;
 border-radius:35px;
 box-shadow:0 15px 40px rgba(255,105,180,.25);
 text-align:center;
 position:relative;
-z-index:2;
+z-index:5;
+}
+
+.progress{
+font-size:14px;
+font-weight:700;
+color:#ff4f9a;
+margin-bottom:15px;
 }
 
 .screen{
@@ -44,32 +54,32 @@ display:none;
 display:block;
 }
 
+.emoji{
+font-size:85px;
+margin-bottom:15px;
+}
+
 h1{
 color:#ff4f9a;
 margin-bottom:20px;
-font-size:2.2rem;
+font-size:2.1rem;
 }
 
 .subtitle{
-font-size:1.15rem;
 color:#666;
-margin-bottom:30px;
-line-height:1.5;
-}
-
-.emoji{
-font-size:80px;
-margin-bottom:15px;
+font-size:1.15rem;
+line-height:1.6;
+margin-bottom:25px;
 }
 
 button{
 border:none;
-padding:16px 28px;
-margin:10px;
+padding:15px 26px;
+margin:8px;
 border-radius:999px;
+cursor:pointer;
 font-size:18px;
 font-weight:700;
-cursor:pointer;
 font-family:inherit;
 transition:.2s;
 }
@@ -84,37 +94,54 @@ color:white;
 }
 
 .no{
-background:#ffd4e5;
+background:#ffd4e6;
 color:#ff4f9a;
+}
+
+.back{
+background:#ececec;
+color:#444;
 }
 
 .choice{
 display:block;
 width:100%;
-max-width:320px;
-margin:12px auto;
+max-width:350px;
+margin:10px auto;
 background:#ff5fa2;
 color:white;
 }
 
 .heart{
 position:fixed;
-font-size:24px;
+font-size:22px;
 pointer-events:none;
 animation:fall linear forwards;
 }
 
 @keyframes fall{
+
 from{
 transform:translateY(-100px);
 opacity:1;
 }
+
 to{
 transform:translateY(110vh);
 opacity:0;
 }
+
 }
+
+#message{
+margin-top:15px;
+color:#ff4f9a;
+font-weight:700;
+min-height:30px;
+}
+
 </style>
+
 </head>
 
 <body>
@@ -125,6 +152,8 @@ opacity:0;
 
 <div id="screen1" class="screen active">
 
+<div class="progress">❤️ Krok 1 z 5</div>
+
 <div class="emoji">🥰</div>
 
 <h1>Kochanie ❤️</h1>
@@ -133,19 +162,24 @@ opacity:0;
 Czy mnie kochaaasz? 😘
 </p>
 
-<button class="yes" onclick="showScreen('screen2')">
-TAK ❤️
+<button class="yes"
+onclick="showScreen('screen2')">
+TAK ❤️ (najedź na "NIE")
 </button>
 
 <button class="no escape">
 NIE 😈
 </button>
 
+<div id="message"></div>
+
 </div>
 
 <!-- EKRAN 2 -->
 
 <div id="screen2" class="screen">
+
+<div class="progress">❤️ Krok 2 z 5</div>
 
 <div class="emoji">🍕</div>
 
@@ -155,12 +189,20 @@ NIE 😈
 To zamawiamy coś na wieczór? 😋
 </p>
 
-<button class="yes" onclick="showScreen('screen3')">
+<button class="yes"
+onclick="showScreen('screen3')">
 TAK 😍
 </button>
 
 <button class="no escape">
 NIE 🤨
+</button>
+
+<br>
+
+<button class="back"
+onclick="showScreen('screen1')">
+⬅️ Wróć
 </button>
 
 </div>
@@ -169,16 +211,34 @@ NIE 🤨
 
 <div id="screen3" class="screen">
 
+<div class="progress">❤️ Krok 3 z 5</div>
+
 <div class="emoji">🍽️</div>
 
 <h1>Jaką kuchnię wybierasz?</h1>
-
 <button class="choice" onclick="chooseCuisine('Włoska')">🍕 Włoska</button>
 <button class="choice" onclick="chooseCuisine('Japońska')">🍣 Japońska</button>
 <button class="choice" onclick="chooseCuisine('Amerykańska')">🍔 Amerykańska</button>
 <button class="choice" onclick="chooseCuisine('Meksykańska')">🌮 Meksykańska</button>
 <button class="choice" onclick="chooseCuisine('Polska')">🥟 Polska</button>
 <button class="choice" onclick="chooseCuisine('Kebab')">🥙 Kebab</button>
+<button class="choice" onclick="chooseCuisine('Chińska')">🥡 Chińska</button>
+<button class="choice" onclick="chooseCuisine('Indyjska')">🍛 Indyjska</button>
+<button class="choice" onclick="chooseCuisine('Tajska')">🥥 Tajska</button>
+<button class="choice" onclick="chooseCuisine('Grecka')">🥙 Grecka</button>
+<button class="choice" onclick="chooseCuisine('Arabska')">🧆 Arabska</button>
+<button class="choice" onclick="chooseCuisine('Koreańska')">🍗 Koreańska</button>
+<button class="choice" onclick="chooseCuisine('Francuska')">🥐 Francuska</button>
+<button class="choice" onclick="chooseCuisine('Hiszpańska')">🥘 Hiszpańska</button>
+<button class="choice" onclick="chooseCuisine('Fast Food')">🍟 Fast Food</button>
+<button class="choice" onclick="chooseCuisine('Ukraińska')">🥟 Ukraińska</button>
+
+<br>
+
+<button class="back"
+onclick="showScreen('screen2')">
+⬅️ Wróć
+</button>
 
 </div>
 
@@ -186,11 +246,20 @@ NIE 🤨
 
 <div id="screen4" class="screen">
 
+<div class="progress">❤️ Krok 4 z 5</div>
+
 <div class="emoji">😋</div>
 
 <h1 id="cuisineTitle"></h1>
 
 <div id="foodOptions"></div>
+
+<br>
+
+<button class="back"
+onclick="showScreen('screen3')">
+⬅️ Zmień kuchnię
+</button>
 
 </div>
 
@@ -198,18 +267,65 @@ NIE 🤨
 
 <div id="screen5" class="screen">
 
+<div class="progress">❤️ Krok 5 z 5</div>
+
 <div class="emoji">🎉❤️🎉</div>
 
 <h1>Świetny wybór!</h1>
 
-<p class="subtitle" id="summary">
-</p>
+<p class="subtitle" id="summary"></p>
+
+<button class="back"
+onclick="showScreen('screen3')">
+🔄 Wybierz coś innego
+</button>
 
 </div>
 
 </div>
 
 <script>
+
+const funnyTexts = [
+
+"Nie oszukujmy się 😘",
+"Ta opcja jest niedostępna ❤️",
+"Spróbuj jeszcze raz 😏",
+"Naprawdę myślałaś, że klikniesz NIE? 😂",
+"To nie działa kochanie 🥰",
+"Ładna próba ❤️",
+"NIE zostało wycofane z obiegu 😎"
+
+];
+
+let speedMultiplier = 1;
+
+document.querySelectorAll(".escape").forEach(btn=>{
+
+function moveButton(){
+
+const x=Math.random()*(window.innerWidth-220);
+const y=Math.random()*(window.innerHeight-120);
+
+btn.style.position="fixed";
+btn.style.left=x+"px";
+btn.style.top=y+"px";
+
+speedMultiplier += 0.2;
+
+const msg=document.getElementById("message");
+
+if(msg){
+msg.innerHTML=
+funnyTexts[Math.floor(Math.random()*funnyTexts.length)];
+}
+
+}
+
+btn.addEventListener("mouseover",moveButton);
+btn.addEventListener("click",moveButton);
+
+});
 
 function showScreen(id){
 
@@ -220,86 +336,206 @@ screen.classList.remove("active");
 document.getElementById(id).classList.add("active");
 }
 
-document.querySelectorAll(".escape").forEach(btn=>{
+const foods = {
 
-function moveButton(){
+"Włoska":[
+"🍕 Margherita",
+"🍕 Pepperoni",
+"🍕 Capricciosa",
+"🍝 Carbonara",
+"🍝 Bolognese",
+"🧀 Lasagne",
+"🍄 Risotto",
+"🥪 Panini"
+],
 
-const x=Math.random()*(window.innerWidth-200);
-const y=Math.random()*(window.innerHeight-100);
+"Japońska":[
+"🍣 Sushi",
+"🍜 Ramen",
+"🥢 Udon",
+"🍤 Tempura",
+"🍱 Bento",
+"🐟 Poke Bowl",
+"🍙 Onigiri"
+],
 
-btn.style.position="fixed";
-btn.style.left=x+"px";
-btn.style.top=y+"px";
-}
+"Amerykańska":[
+"🍔 Cheeseburger",
+"🍔 Burger BBQ",
+"🌭 Hot Dog",
+"🍟 Frytki",
+"🍗 Skrzydełka",
+"🥩 Stek",
+"🥪 Philly Cheesesteak"
+],
 
-btn.addEventListener("mouseover",moveButton);
-btn.addEventListener("click",moveButton);
+"Meksykańska":[
+"🌮 Taco",
+"🌯 Burrito",
+"🫓 Quesadilla",
+"🥙 Fajita",
+"🧀 Nachosy",
+"🌶️ Chili con carne"
+],
 
-});
+"Polska":[
+"🥟 Pierogi ruskie",
+"🥟 Pierogi z mięsem",
+"🍲 Żurek",
+"🥩 Schabowy",
+"🥔 Placki ziemniaczane",
+"🥬 Gołąbki"
+],
 
-let selectedCuisine="";
+"Kebab":[
+"🥙 Kebab w bułce",
+"🌯 Rollo",
+"🍟 Kebab Box",
+"🧀 Mega Kebab",
+"🥙 Mieszany"
+],
 
-function chooseCuisine(cuisine){
+"Ukraińska":[
+"🥟 Czeburek",
+"🥟 Czeburek z serem",
+"🥟 Czeburek z mięsem",
+"🍲 Barszcz ukraiński",
+"🥟 Wareniki",
+"🥔 Deruny"
+],
 
-selectedCuisine=cuisine;
+"Chińska":[
+"🥡 Chow Mein",
+"🍤 Krewetki po syczuańsku",
+"🍚 Ryż smażony",
+"🍗 Kurczak Gong Bao",
+"🥟 Dim Sum",
+"🍜 Makaron chiński"
+],
+  "Indyjska":[
+"🍛 Butter Chicken",
+"🍛 Tikka Masala",
+"🍚 Biryani",
+"🫓 Naan",
+"🥘 Korma",
+"🌶️ Vindaloo"
+],
 
-showScreen("screen4");
+"Tajska":[
+"🍜 Pad Thai",
+"🥥 Curry zielone",
+"🥥 Curry czerwone",
+"🍤 Krewetki po tajsku",
+"🍚 Ryż smażony",
+"🍗 Kurczak satay"
+],
 
-document.getElementById("cuisineTitle").innerText=
-"Wybrałaś kuchnię " + cuisine + " ❤️";
+"Grecka":[
+"🥙 Gyros",
+"🥗 Sałatka grecka",
+"🍢 Souvlaki",
+"🧀 Halloumi",
+"🍆 Musaka",
+"🥙 Pita z kurczakiem"
+],
 
-const foods={
+"Arabska":[
+"🧆 Falafel",
+"🥙 Shawarma",
+"🍢 Kofta",
+"🥗 Tabbouleh",
+"🍚 Kabsa",
+"🥙 Mix meze"
+],
 
-"Włoska":["🍕 Pizza","🍝 Makaron","🧀 Lasagne"],
+"Koreańska":[
+"🍗 Korean Fried Chicken",
+"🍚 Bibimbap",
+"🥩 Bulgogi",
+"🍜 Ramyeon",
+"🥟 Mandu",
+"🌶️ Tteokbokki"
+],
 
-"Japońska":["🍣 Sushi","🍜 Ramen","🥢 Udon"],
+"Francuska":[
+"🥐 Croissant",
+"🥩 Steak Frites",
+"🥪 Croque Monsieur",
+"🍲 Zupa cebulowa",
+"🥧 Quiche Lorraine",
+"🍗 Coq au Vin"
+],
 
-"Amerykańska":["🍔 Burger","🍟 Frytki","🌭 Hot Dog"],
+"Hiszpańska":[
+"🥘 Paella",
+"🍤 Gambas",
+"🥔 Tortilla Española",
+"🍖 Chorizo",
+"🧀 Tapas Mix",
+"🥪 Bocadillo"
+],
 
-"Meksykańska":["🌮 Taco","🌯 Burrito","🫓 Quesadilla"],
-
-"Polska":["🥟 Pierogi","🍲 Żurek","🥩 Schabowy"],
-
-"Kebab":["🥙 Kebab","🌯 Rollo","🍟 Kebab Box"]
+"Fast Food":[
+"🍔 Burger",
+"🍕 Pizza",
+"🌭 Hot Dog",
+"🍗 Nuggets",
+"🍟 Frytki",
+"🥪 Zapiekanka",
+"🌯 Tortilla"
+]
 
 };
 
-let html="";
+function chooseCuisine(cuisine){
+
+showScreen("screen4");
+
+document.getElementById("cuisineTitle").innerHTML =
+"Wybrałaś kuchnię " + cuisine + " ❤️";
+
+let html = "";
 
 foods[cuisine].forEach(food=>{
 
-html+=`
-<button class="choice" onclick="finish('${food}')">
+html += `
+<button class="choice"
+onclick="finish('${food}')">
 ${food}
 </button>
 `;
 
 });
 
-document.getElementById("foodOptions").innerHTML=html;
+document.getElementById("foodOptions").innerHTML = html;
+
 }
 
 function finish(food){
 
 showScreen("screen5");
 
-document.getElementById("summary").innerHTML=
-`
-Wybrałaś <b>${food}</b> ❤️<br><br>
-Zamówienie zostało zatwierdzone przez najpiękniejszą dziewczynę na świecie 😘
+document.getElementById("summary").innerHTML = `
+Wybrałaś <b>${food}</b> ❤️
+<br><br>
+Decyzja została zatwierdzona przez komisję do spraw wieczornego jedzonka 🥰
+<br><br>
+Smacznego kochanie 😘
 `;
 
-for(let i=0;i<100;i++){
+for(let i=0;i<120;i++){
 
 const heart=document.createElement("div");
 
 heart.classList.add("heart");
 
-heart.innerHTML=Math.random()>0.5 ? "💖" : "💕";
+heart.innerHTML =
+Math.random()>0.5 ? "💖" : "💕";
 
-heart.style.left=Math.random()*100+"vw";
+heart.style.left =
+Math.random()*100+"vw";
 
-heart.style.animationDuration=
+heart.style.animationDuration =
 (3+Math.random()*4)+"s";
 
 document.body.appendChild(heart);
@@ -307,7 +543,9 @@ document.body.appendChild(heart);
 setTimeout(()=>{
 heart.remove();
 },7000);
+
 }
+
 }
 
 </script>
