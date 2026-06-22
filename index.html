@@ -148,8 +148,6 @@ min-height:30px;
 
 <div class="card">
 
-<!-- EKRAN 1 -->
-
 <div id="screen1" class="screen active">
 
 <div class="progress">❤️ Krok 1 z 5</div>
@@ -164,7 +162,7 @@ Czy mnie kochaaasz? 😘
 
 <button class="yes"
 onclick="showScreen('screen2')">
-TAK ❤️ (najedź na "NIE")
+TAK ❤️ (najedź na NIE)
 </button>
 
 <button class="no escape">
@@ -174,8 +172,6 @@ NIE 😈
 <div id="message"></div>
 
 </div>
-
-<!-- EKRAN 2 -->
 
 <div id="screen2" class="screen">
 
@@ -207,8 +203,6 @@ onclick="showScreen('screen1')">
 
 </div>
 
-<!-- EKRAN 3 -->
-
 <div id="screen3" class="screen">
 
 <div class="progress">❤️ Krok 3 z 5</div>
@@ -217,21 +211,17 @@ onclick="showScreen('screen1')">
 
 <h1>Jaką kuchnię wybierasz?</h1>
 <button class="choice" onclick="chooseCuisine('Włoska')">🍕 Włoska</button>
-<button class="choice" onclick="chooseCuisine('Japońska')">🍣 Japońska</button>
-<button class="choice" onclick="chooseCuisine('Amerykańska')">🍔 Amerykańska</button>
+<button class="choice" onclick="chooseCuisine('Sushi')">🍣 Sushi</button>
+<button class="choice" onclick="chooseCuisine('Burgery')">🍔 Burgery</button>
+<button class="choice" onclick="chooseCuisine('Kebab')">🥙 Kebab</button>
 <button class="choice" onclick="chooseCuisine('Meksykańska')">🌮 Meksykańska</button>
 <button class="choice" onclick="chooseCuisine('Polska')">🥟 Polska</button>
-<button class="choice" onclick="chooseCuisine('Kebab')">🥙 Kebab</button>
 <button class="choice" onclick="chooseCuisine('Chińska')">🥡 Chińska</button>
-<button class="choice" onclick="chooseCuisine('Indyjska')">🍛 Indyjska</button>
-<button class="choice" onclick="chooseCuisine('Tajska')">🥥 Tajska</button>
-<button class="choice" onclick="chooseCuisine('Grecka')">🥙 Grecka</button>
-<button class="choice" onclick="chooseCuisine('Arabska')">🧆 Arabska</button>
-<button class="choice" onclick="chooseCuisine('Koreańska')">🍗 Koreańska</button>
-<button class="choice" onclick="chooseCuisine('Francuska')">🥐 Francuska</button>
-<button class="choice" onclick="chooseCuisine('Hiszpańska')">🥘 Hiszpańska</button>
-<button class="choice" onclick="chooseCuisine('Fast Food')">🍟 Fast Food</button>
-<button class="choice" onclick="chooseCuisine('Ukraińska')">🥟 Ukraińska</button>
+<button class="choice" onclick="chooseCuisine('Azjatycka')">🍜 Azjatycka</button>
+<button class="choice" onclick="chooseCuisine('Kurczak')">🍗 Kurczak i boxy</button>
+<button class="choice" onclick="chooseCuisine('StreetFood')">🥪 Street Food</button>
+<button class="choice" onclick="chooseCuisine('Czeburki')">🥟 Czeburki</button>
+<button class="choice" onclick="chooseCuisine('Deser')">🍰 Deser zamiast kolacji</button>
 
 <br>
 
@@ -241,8 +231,6 @@ onclick="showScreen('screen2')">
 </button>
 
 </div>
-
-<!-- EKRAN 4 -->
 
 <div id="screen4" class="screen">
 
@@ -258,12 +246,10 @@ onclick="showScreen('screen2')">
 
 <button class="back"
 onclick="showScreen('screen3')">
-⬅️ Zmień kuchnię
+⬅️ Zmień kategorię
 </button>
 
 </div>
-
-<!-- EKRAN 5 -->
 
 <div id="screen5" class="screen">
 
@@ -287,18 +273,13 @@ onclick="showScreen('screen3')">
 <script>
 
 const funnyTexts = [
-
 "Nie oszukujmy się 😘",
 "Ta opcja jest niedostępna ❤️",
-"Spróbuj jeszcze raz 😏",
-"Naprawdę myślałaś, że klikniesz NIE? 😂",
-"To nie działa kochanie 🥰",
-"Ładna próba ❤️",
-"NIE zostało wycofane z obiegu 😎"
-
+"Ładna próba 😏",
+"NIE zostało wycofane z obiegu 😂",
+"Spróbuj jeszcze raz kochanie 🥰",
+"To nie działa 😎"
 ];
-
-let speedMultiplier = 1;
 
 document.querySelectorAll(".escape").forEach(btn=>{
 
@@ -311,12 +292,10 @@ btn.style.position="fixed";
 btn.style.left=x+"px";
 btn.style.top=y+"px";
 
-speedMultiplier += 0.2;
-
 const msg=document.getElementById("message");
 
 if(msg){
-msg.innerHTML=
+msg.innerHTML =
 funnyTexts[Math.floor(Math.random()*funnyTexts.length)];
 }
 
@@ -345,28 +324,34 @@ const foods = {
 "🍝 Carbonara",
 "🍝 Bolognese",
 "🧀 Lasagne",
-"🍄 Risotto",
-"🥪 Panini"
+"🍄 Risotto"
 ],
 
-"Japońska":[
-"🍣 Sushi",
-"🍜 Ramen",
-"🥢 Udon",
-"🍤 Tempura",
-"🍱 Bento",
+"Sushi":[
+"🍣 Sushi Mix",
+"🍣 Futomaki",
+"🍣 Hosomaki",
+"🍣 California",
 "🐟 Poke Bowl",
-"🍙 Onigiri"
+"🍱 Bento"
 ],
 
-"Amerykańska":[
+"Burgery":[
 "🍔 Cheeseburger",
 "🍔 Burger BBQ",
-"🌭 Hot Dog",
-"🍟 Frytki",
-"🍗 Skrzydełka",
-"🥩 Stek",
-"🥪 Philly Cheesesteak"
+"🥓 Burger Bekonowy",
+"🍔 Burger Wołowy",
+"🧀 Burger Serowy",
+"🍟 Burger + Frytki"
+],
+
+"Kebab":[
+"🥙 Kebab w bułce",
+"🌯 Rollo",
+"🍟 Kebab Box",
+"🥙 Mega Kebab",
+"🥙 Kebab mieszany",
+"🍗 Kebab z kurczakiem"
 ],
 
 "Meksykańska":[
@@ -381,108 +366,63 @@ const foods = {
 "Polska":[
 "🥟 Pierogi ruskie",
 "🥟 Pierogi z mięsem",
-"🍲 Żurek",
 "🥩 Schabowy",
+"🍲 Żurek",
 "🥔 Placki ziemniaczane",
 "🥬 Gołąbki"
 ],
-
-"Kebab":[
-"🥙 Kebab w bułce",
-"🌯 Rollo",
-"🍟 Kebab Box",
-"🧀 Mega Kebab",
-"🥙 Mieszany"
+  "Chińska":[
+"🥡 Kurczak słodko-kwaśny",
+"🍚 Ryż smażony",
+"🥟 Dim Sum",
+"🍤 Krewetki po syczuańsku",
+"🍜 Chow Mein",
+"🍗 Kurczak Gong Bao"
 ],
 
-"Ukraińska":[
-"🥟 Czeburek",
+"Azjatycka":[
+"🍜 Pad Thai",
+"🍜 Ramen",
+"🥢 Udon",
+"🍤 Tempura",
+"🍛 Curry",
+"🍚 Fried Rice"
+],
+
+"Kurczak":[
+"🍗 Stripsy",
+"🍗 Hot Wings",
+"🍗 Kurczak panierowany",
+"🍗 Box Kurczaka",
+"🍟 Chicken Box",
+"🧀 Chicken Burger"
+],
+
+"StreetFood":[
+"🥪 Zapiekanka",
+"🌭 Hot Dog",
+"🥪 Panini",
+"🌯 Tortilla",
+"🥙 Pita",
+"🍟 Frytki Belgijskie"
+],
+
+"Czeburki":[
+"🥟 Czeburek klasyczny",
 "🥟 Czeburek z serem",
 "🥟 Czeburek z mięsem",
-"🍲 Barszcz ukraiński",
-"🥟 Wareniki",
-"🥔 Deruny"
+"🥟 Czeburek mix",
+"🥟 Duży czeburek",
+"🥟 Czeburek premium"
 ],
 
-"Chińska":[
-"🥡 Chow Mein",
-"🍤 Krewetki po syczuańsku",
-"🍚 Ryż smażony",
-"🍗 Kurczak Gong Bao",
-"🥟 Dim Sum",
-"🍜 Makaron chiński"
-],
-  "Indyjska":[
-"🍛 Butter Chicken",
-"🍛 Tikka Masala",
-"🍚 Biryani",
-"🫓 Naan",
-"🥘 Korma",
-"🌶️ Vindaloo"
-],
-
-"Tajska":[
-"🍜 Pad Thai",
-"🥥 Curry zielone",
-"🥥 Curry czerwone",
-"🍤 Krewetki po tajsku",
-"🍚 Ryż smażony",
-"🍗 Kurczak satay"
-],
-
-"Grecka":[
-"🥙 Gyros",
-"🥗 Sałatka grecka",
-"🍢 Souvlaki",
-"🧀 Halloumi",
-"🍆 Musaka",
-"🥙 Pita z kurczakiem"
-],
-
-"Arabska":[
-"🧆 Falafel",
-"🥙 Shawarma",
-"🍢 Kofta",
-"🥗 Tabbouleh",
-"🍚 Kabsa",
-"🥙 Mix meze"
-],
-
-"Koreańska":[
-"🍗 Korean Fried Chicken",
-"🍚 Bibimbap",
-"🥩 Bulgogi",
-"🍜 Ramyeon",
-"🥟 Mandu",
-"🌶️ Tteokbokki"
-],
-
-"Francuska":[
-"🥐 Croissant",
-"🥩 Steak Frites",
-"🥪 Croque Monsieur",
-"🍲 Zupa cebulowa",
-"🥧 Quiche Lorraine",
-"🍗 Coq au Vin"
-],
-
-"Hiszpańska":[
-"🥘 Paella",
-"🍤 Gambas",
-"🥔 Tortilla Española",
-"🍖 Chorizo",
-"🧀 Tapas Mix",
-"🥪 Bocadillo"
-],
-
-"Fast Food":[
-"🍔 Burger",
-"🍕 Pizza",
-"🌭 Hot Dog",
-"🍗 Nuggets",
-"🍟 Frytki",
-"🥪 Zapiekanka",
-"🌯 Tortilla"
+"Deser":[
+"🍰 Sernik",
+"🍫 Brownie",
+"🍨 Lody",
+"🧇 Gofry",
+"🥞 Naleśniki",
+"🍓 Truskawki z bitą śmietaną"
 ]
 
 };
@@ -492,7 +432,7 @@ function chooseCuisine(cuisine){
 showScreen("screen4");
 
 document.getElementById("cuisineTitle").innerHTML =
-"Wybrałaś kuchnię " + cuisine + " ❤️";
+"Wybrałaś: " + cuisine + " ❤️";
 
 let html = "";
 
@@ -518,9 +458,9 @@ showScreen("screen5");
 document.getElementById("summary").innerHTML = `
 Wybrałaś <b>${food}</b> ❤️
 <br><br>
-Decyzja została zatwierdzona przez komisję do spraw wieczornego jedzonka 🥰
+Wniosek został rozpatrzony pozytywnie 🥰
 <br><br>
-Smacznego kochanie 😘
+Przygotuj się na pyszne jedzonko 😘
 `;
 
 for(let i=0;i<120;i++){
@@ -530,13 +470,13 @@ const heart=document.createElement("div");
 heart.classList.add("heart");
 
 heart.innerHTML =
-Math.random()>0.5 ? "💖" : "💕";
+Math.random() > 0.5 ? "💖" : "💕";
 
 heart.style.left =
-Math.random()*100+"vw";
+Math.random()*100 + "vw";
 
 heart.style.animationDuration =
-(3+Math.random()*4)+"s";
+(3 + Math.random()*4) + "s";
 
 document.body.appendChild(heart);
 
