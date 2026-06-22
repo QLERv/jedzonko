@@ -1,1 +1,203 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kolacja dla Nas ❤️</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Quicksand',sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#ffd6e7,#ffeaf3,#fff0f6);
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.heart{
+    position:fixed;
+    font-size:24px;
+    animation:fall linear infinite;
+    opacity:.6;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-100px);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+.card{
+    background:white;
+    width:90%;
+    max-width:650px;
+    padding:35px;
+    border-radius:35px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(255,105,180,.25);
+    position:relative;
+    z-index:10;
+}
+
+.food{
+    font-size:90px;
+    margin-bottom:10px;
+}
+
+h1{
+    color:#ff4f9a;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    color:#666;
+    margin-bottom:30px;
+    line-height:1.5;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    position:relative;
+    min-height:80px;
+}
+
+button{
+    border:none;
+    padding:16px 30px;
+    border-radius:50px;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.yes{
+    background:#ff5fa2;
+    color:white;
+}
+
+.yes:hover{
+    transform:scale(1.08);
+}
+
+.no{
+    background:#ffd3e5;
+    color:#ff4f9a;
+    position:relative;
+}
+
+.result{
+    display:none;
+    margin-top:30px;
+}
+
+.result h2{
+    color:#ff4f9a;
+    margin-bottom:15px;
+}
+
+.result p{
+    color:#555;
+    font-size:18px;
+}
+
+.big{
+    font-size:70px;
+    margin-bottom:10px;
+}
+</style>
+</head>
+<body>
+
+<div id="hearts"></div>
+
+<div class="card">
+
+    <div class="food">🍝🍓🩷</div>
+
+    <h1>Kochanie ❤️</h1>
+
+    <p class="subtitle">
+        Mam bardzo ważne pytanie...<br><br>
+        Co dziś jemy na kolację? 😋
+    </p>
+
+    <div class="buttons" id="buttons">
+        <button class="yes" onclick="showAnswer()">
+            Makaron z truskawkami 🍓
+        </button>
+
+        <button class="no" id="noBtn">
+            Nie wiem 🤔
+        </button>
+    </div>
+
+    <div class="result" id="result">
+        <div class="big">🥰</div>
+        <h2>Wiedziałem, że wybierzesz najlepiej!</h2>
+        <p>
+            W takim razie rezerwuję miejsce przy stole dla najpiękniejszej dziewczyny ❤️
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+// serduszka
+for(let i=0;i<30;i++){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML=Math.random()>0.5?"💖":"💕";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(5+Math.random()*8)+"s";
+    heart.style.fontSize=(15+Math.random()*25)+"px";
+    document.body.appendChild(heart);
+}
+
+// uciekający przycisk
+const noBtn=document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+    const x=Math.random()*(window.innerWidth-150);
+    const y=Math.random()*(window.innerHeight-80);
+
+    noBtn.style.position="fixed";
+    noBtn.style.left=x+"px";
+    noBtn.style.top=y+"px";
+});
+
+// mobile
+noBtn.addEventListener("click",()=>{
+    const x=Math.random()*(window.innerWidth-150);
+    const y=Math.random()*(window.innerHeight-80);
+
+    noBtn.style.position="fixed";
+    noBtn.style.left=x+"px";
+    noBtn.style.top=y+"px";
+});
+
+function showAnswer(){
+    document.getElementById("buttons").style.display="none";
+    document.getElementById("result").style.display="block";
+}
+</script>
+
+</body>
+</html>
